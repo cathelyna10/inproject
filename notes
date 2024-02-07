@@ -1,0 +1,58 @@
+package lock json shouldnt be touched
+it's just a file that exists to show 
+if there is a security leak etc
+so changes get overwritten by Running npm install
+
+
+npm install is to push or download?
+
+package.json we can make changes
+
+node_modules, changes get overwritten by running npm install as well
+
+doesnt matter w the error when you wanna name:
+
+{ "name": "BookedIn",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {"express": "^4.18.2"}
+}
+
+
+NOTES:
+
+
+
+const express = require('express')
+const app = express()
+
+// ports are reserved. cant just open them randomly
+// lots of frameworks use port 3000
+// nothing should run on port 88
+const port = 3000 // set the port of the web server
+
+// custom 404 page . we havent given a specific page so it's a 404
+
+// 2 requests and response
+app.use((req, res) => { // set the “default” page handler
+  res.type('text/plain') // Set the response type to plain text
+  res.status(404) // set the response status code to 404
+  res.send('404 - Not Found')// set the content of the response
+})
+
+
+// custom 500 page
+app.use((err, req, res, next) => { // set the function of how to deal with errors
+  console.error(err.message) // get the error message and write it to the console
+  res.type('text/plain') // Set the response type to plain text
+  res.status(500) // set the response status code to 500
+  res.send('500 - Server Error')// set the content of the response
+
+  // sometimes it's not a 404. just asking the server for smth that doesnt exist
+  // a 500 means the entire code has crashed
+  // so there is a server error
+})
+app.listen(port, () => console.log( // set our app up to listen to a given port.
+`Express started on http://localhost:${port}; ` + // when listening has started execute this function
+`press Ctrl-C to terminate.`)) // that writes to the console
+
