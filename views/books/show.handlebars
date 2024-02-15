@@ -1,0 +1,16 @@
+<h1>{{book.bookName}}</h1>
+{{#if author}}
+<p>Written by {{author.firstName}} {{author.lastName}}</p>
+{{/if}}
+
+{{! if there is a genre, then add it in. But if no genre, only include publishing date}}
+{{#if genre}}
+<p>
+  Originally published in {{book.publishingYear}}, under the genre of {{genre.genreName}}
+</p>
+
+{{else}}
+<p>
+  Originally published in {{book.publishingYear}}
+</p>
+{{/if}}
