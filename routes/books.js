@@ -18,7 +18,7 @@ router.get('/edit', async (req, res, next) => {
 });
 
 router.get('/form', async (req, res, next) => { 
-  res.render('books/form', { title: 'BookedIn || Books', authors: Author.all });
+  res.render('books/form', { title: 'BookedIn || Books', authors: Author.all, genres: Genre.all });
 });
 
 router.post('/upsert', async (req, res, next) => {
@@ -33,6 +33,9 @@ router.get('/show/:id', async (req, res, next) => {
   }
   if (templateVars.book.authorId) {
     templateVars['author'] = Author.get(templateVars.book.authorId);
+  }
+  if (templateVars.book.genreId) {
+    templateVars['genre'] = Genre.get(templateVars.book.genreId);
   }
   res.render('books/show', templateVars);
 });

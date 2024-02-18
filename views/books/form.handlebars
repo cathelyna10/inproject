@@ -32,7 +32,7 @@
     <select name="genreId" id="genreId">
       <option disabled selected value>-- select Genre --</option>
       {{#each genres}}
-        <option value="{{@index}}" {{#if (and @root.genre (eq @root.book.genreId @index))}}selected{{/if}}>
+        <option value="{{@index}}" {{#if (and @root.book (eq @root.book.genreId @index))}}selected{{/if}}>
           {{this.genreName}} 
         </option>
       {{/each}}
