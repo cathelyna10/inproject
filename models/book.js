@@ -1,5 +1,5 @@
 const books = [
-    {bookName: "After the Internet: Digital Networks between Capital and the Common,",publishingYear: 2022},
+    {bookName: "After the Internet: Digital Networks between Capital and the Common,",publishingYear: 2022,authorIds: ["0","1"]},
     {bookName: "The Uprising: On Poetry and Finance,",publishingYear: 2012},
     {bookName: "Cybernetics: Or Control and Communication in the Animal and the Machine,",publishingYear: 1948},
   ]
@@ -11,6 +11,9 @@ const books = [
     books[book.id] = book;
   }
   exports.upsert = (book) => {
+    if (book.authorIds && ! Array.isArray(book.authorIds)) {
+      book.authorIds = [book.authorIds];
+    }
     if (book.id) {
       exports.update(book);
     } else {
@@ -18,7 +21,7 @@ const books = [
     }
   }
   
-  exports.all = books
+  
 
   exports.get = (idx) => {
     return books[idx];
@@ -27,6 +30,9 @@ const books = [
   exports.add = (book) => {
     books.push(book);
   }
+
+  exports.all = books
+
   
 
   

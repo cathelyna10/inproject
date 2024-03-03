@@ -25,12 +25,18 @@ router.get('/form', async (req, res, next) => {
  // Author.add(req.body);
  // res.redirect(303, '/authors')
 //});
-
 router.post('/upsert', async (req, res, next) => {
-  console.log('body: ' + JSON.stringify(req.body));
+  console.log('body: ' + JSON.stringify(req.body))
   Author.upsert(req.body);
-  res.redirect(303, '/authors');
-}); 
+  let createdOrupdated = req.body.id ? 'updated' : 'created';
+  req.session.flash = {
+    type: 'info',
+    intro: 'Success!',
+    message: `the author has been ${createdOrupdated}!`,
+  };
+  res.redirect(303, '/authors')
+});
+
 
 router.get('/show/:id', async (req, res, next) => {
   let templateVars = {

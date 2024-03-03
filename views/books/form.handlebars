@@ -1,6 +1,8 @@
 <h1>Add New Book Here!</h1>
 
 <form action="/books/upsert" role="form" method="post">
+<input type="hidden" name="_csrf" value="{{_csrfToken}}">
+
 {{#if book}}
     <div>
       <h2>{{book.bookName}} {{book.publishingYear}}</h2>
@@ -19,14 +21,17 @@
   <br>
   <div>
 <label for="authorId">Author</label>
-    <select name="authorId" id="authorId">
-      <option disabled selected value>-- select Author --</option>
+    <select name="authorIds" multiple id="authorIds">
+      <option disabled value>-- select Author --</option>
       {{#each authors}}
-        <option value="{{@index}}" {{#if (and @root.book (eq @root.book.authorId @index))}}selected{{/if}}>
-          {{this.firstName}} {{this.lastName}}
+        <option value="{{@index}}"
+          {{#if (and @root.book (in @root.book.authorIds @index))}}selected{{/if}}>
+            {{this.firstName}} {{this.lastName}}
         </option>
       {{/each}}
     </select>
+
+
 
     <label for="genreId">Genre</label>
     <select name="genreId" id="genreId">
@@ -37,6 +42,8 @@
         </option>
       {{/each}}
     </select>
+
+
 
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

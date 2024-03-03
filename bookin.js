@@ -1,9 +1,38 @@
 
 //platform set up on the top!
 const express = require('express')
+const { credentials } = require('./config')
+const expressSession = require('express-session')
+const csrf = require('csurf')
 //proper form handling
-const bodyParser = require('body-parser')
+const booksUsersRouter = require('./routes/books_users');
 
+const path = require('path');
+
+const bodyParser = require('body-parser')
+const app = express()
+const port = 3000
+
+const cookieParser = require('cookie-parser')
+
+
+app.use(cookieParser(credentials.cookieSecret));
+app.use(expressSession({
+  secret: credentials.cookieSecret,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
+app.use((req, res, next) => {
+  res.locals.flash = req.session.flash
+  delete req.session.flash
+  next()
+})
+//to show the current session's user
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.currentUser
+  next()
+})
 
 var handlebars = require('express-handlebars').create({
   helpers: {
@@ -30,9 +59,8 @@ const indexRouter = require('./routes/index');
 const authorsRouter = require('./routes/authors');
 const booksRouter = require('./routes/books');
 const genresRouter = require('./routes/genres');
-
-const app = express()
-const port = 3000
+const usersRouter = require('./routes/users');
+const commentsRouter = require('./routes/comments');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -42,6 +70,11 @@ app.use('/', indexRouter);
 app.use('/authors', authorsRouter);
 app.use('/books', booksRouter);
 app.use('/genres', genresRouter);
+app.use('/users', usersRouter);
+app.use('/books_users', booksUsersRouter);
+app.use('/comments', commentsRouter);
+app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')))
+
 
 
 //test
@@ -65,4 +98,10 @@ app.use((err, req, res, next) => {
 app.listen(port, () => console.log(
 `Express started on http://localhost:${port}; ` +
 `press Ctrl-C to terminate.`))
+
+app.use(csrf({ cookie: true }))
+app.use((req, res, next) => {
+  res.locals._csrfToken = req.csrfToken()
+  next()
+})
 
