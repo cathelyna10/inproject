@@ -1,3 +1,10 @@
+/*const db = require('../database')
+
+exports.all = async () => {
+ const { rows } = await db.getPool().query("select * from books order by id");
+ return db.camelize(rows);
+}
+*/
 const books = [
     {bookName: "After the Internet: Digital Networks between Capital and the Common,",publishingYear: 2022,authorIds: ["0","1"]},
     {bookName: "The Uprising: On Poetry and Finance,",publishingYear: 2012},
@@ -31,7 +38,7 @@ const books = [
     books.push(book);
   }
 
-  exports.all = books
+exports.all = books
 
   
 

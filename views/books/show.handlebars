@@ -52,8 +52,8 @@
 {{#if comments}}
 <div id="commentsContainer">
 {{#each comments}}
-<div class="text">
-    <p>{{this.comment}} - Posted by {{this.userEmail}}</p>
+<div class="comment">
+    <p>{{this.comment}} - Posted by {{this.userEmail}}</p> <a href="/comments/edit?id={{@index}}">~ edit</a>
 </div>
 <form id="commentForm" action="/comments/upsert" role="form" method="post">
     <!-- Form fields -->

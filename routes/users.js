@@ -6,7 +6,7 @@ const Book = require('../models/book');
 const BookUser = require('../models/book_user');
 
 
-function IsLoggedIn(req, res) {
+function isLoggedIn(req, res) {
   if (req.session.currentUser) {
     req.session.flash = {
       type: 'info',
@@ -35,7 +35,7 @@ router.get('/profile', async (req, res, next) => {
 
 
 router.get('/register', async (req, res, next) => {
-   if (helpers.IsLoggedIn(req, res)) {
+   if (helpers.isLoggedIn(req, res)) {
       return
     }
     res.render('users/register', { title: 'BookedIn || Registration' });

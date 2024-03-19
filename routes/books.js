@@ -7,11 +7,18 @@ const BookUser = require('../models/book_user');
 const Comment = require('../models/comment');
 
 const bodyParser = require('body-parser');
+/*
+router.get('/', async (req, res, next) => {
+  let books = await Book.all();
+  res.render('books/index', { title: 'BookedIn || Books', books: books });
+ });
 
+*/
 router.get('/', function(req, res, next) {
   const books = Book.all
   res.render('books/index', { title: 'BookedIn || Books', books: books });
 });
+
 
 router.get('/edit', async (req, res, next) => {
   let bookIndex = req.query.id;
@@ -52,33 +59,17 @@ router.get('/show/:id', async (req, res, next) => {
   if (req.session.currentUser) {
     templateVars['bookUser'] = BookUser.get(req.params.id, req.session.currentUser.email);
   }
+  if (req.session.currentUser) {
+    templateVars['comments'] = Comment.AllForBook(req.params.id, req.session.currentUser.email);
+  }
   res.render('books/show', templateVars);
 });
-
-
-
-
-router.get('/show/:id', async (req, res, next) => {
-  let templateVars = {
-    title: 'BookedIn || Books', book: Book.get(req.params.id)
-  }
-  if (templateVars.book.authorIds) {
-    templateVars['authors'] = templateVars.book.authorIds.map((authorId) => Author.get(authorId))
-  }
-
-  if (templateVars.book.genreId) {
-    templateVars['genre'] = Genre.get(templateVars.book.genreId);
-  }
-
-
-  res.render('books/show', templateVars);
-});
-
 
   //const authors = [
     //"James S. A. Corey", "Craig Alanson", "Cixin Liu"
   //]
   //res.render('authors/index', { title: 'BookedIn || Authors', authors: authors });
+  //
 
 
 module.exports = router;

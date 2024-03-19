@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const Comment = require('../models/comment');
+const Book = require('../models/book');
 
 router.post('/upsert', async (req, res, next) => {
   console.log('body: ' + JSON.stringify(req.body))
@@ -19,4 +19,9 @@ router.post('/upsert', async (req, res, next) => {
   res.redirect(303, redirect)
 });
 
+router.get('/edit', async (req, res, next) => {
+  let commentIndex = req.query.id;
+  let comment = Comment.AllForBook(commentIndex);
+  res.render('comments/form', { title: 'BookedIn || Edit Comment', comment:Comment, commentIndex: commentIndex });
+});
 module.exports = router;
