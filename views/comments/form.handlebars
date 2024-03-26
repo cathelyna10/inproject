@@ -7,11 +7,14 @@
     <div>
       <h2>{{comment.commentText}}</h2>
       <input type="hidden" name="id" value="{{comment.id}}">
+       <input type="hidden" name="bookId" value="{{comment.bookId}}">
+    <input type="hidden" name="userEmail" value="{{commment.currentUser.email}}">
+   
     </div>
   {{/if}}
   <div>
     <label for="comment_edit">Edit Comment</label>
-    <input type="text" id="comment_edit" name="commentText" {{#if comment}}value="{{comment.comment}}"{{/if}}>
+    <input type="text" id="comment_edit" name="comment" {{#if comment}}value="{{comment.comment}}"{{/if}}>
   </div>
   <br>
   <button type="submit" class="btn btn-primary">Submit</button>

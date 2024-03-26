@@ -21,7 +21,7 @@ router.post('/upsert', async (req, res, next) => {
 
 router.get('/edit', async (req, res, next) => {
   let commentIndex = req.query.id;
-  let comment = Comment.AllForBook(commentIndex);
-  res.render('comments/form', { title: 'BookedIn || Edit Comment', comment:Comment, commentIndex: commentIndex });
+  let comment = Comment.get(commentIndex);
+  res.render('comments/form', { title: 'BookedIn || Edit Comment', comment:comment, commentIndex: commentIndex });
 });
 module.exports = router;
