@@ -3,29 +3,51 @@ const router = express.Router();
 const Author = require('../models/author');
 const Book = require('../models/book');
 
-
-router.get('/', function(req, res, next) {
-  const authors = Author.all
+router.get('/', async (req, res, next) => {
+  let authors = await Author.all();
   res.render('authors/index', { title: 'BookedIn || Authors', authors: authors });
-});
-
+ });
+ 
+/*
 router.get('/edit', async (req, res, next) => {
   let authorIndex = req.query.id;
   let author = Author.get(authorIndex);
   res.render('authors/form', { title: 'BookedIn || Authors', author: author, authorIndex: authorIndex, books: Book });
 });
+*/
 
+router.post('/upsert', async (req, res, next) => {
+  console.log('body: ' + JSON.stringify(req.body))
+  await Author.upsert(req.body);
+  req.session.flash = {
+    type: 'info',
+    intro: 'Success!',
+    message: 'the author has been created!',
+  };
+  res.redirect(303, '/authors')
+ });
+ 
+router.get('/form', async (req, res, next) => {
+  let templateVars = { title: 'BookedIn || Authors' }
+  if (req.query.id) {
+    let author = await Author.get(req.query.id)
+    if (author) {templateVars['author'] = author}
+  }
+  res.render('authors/form', templateVars);
+});
+
+/*
 router.get('/form', async (req, res, next) => {
   res.render('authors/form', { title: 'BookedIn || Authors', book: Books });
 });
-
+*/
 //router.post('/create', async (req, res, next) => {
  // console.log('body: ' + JSON.stringify(req.body))
   //make the body available, pass it to the model
  // Author.add(req.body);
  // res.redirect(303, '/authors')
 //});
-router.post('/upsert', async (req, res, next) => {
+/*router.post('/upsert', async (req, res, next) => {
   console.log('body: ' + JSON.stringify(req.body))
   Author.upsert(req.body);
   let createdOrupdated = req.body.id ? 'updated' : 'created';
@@ -37,7 +59,7 @@ router.post('/upsert', async (req, res, next) => {
   res.redirect(303, '/authors')
 });
 
-
+*/
 router.get('/show/:id', async (req, res, next) => {
   let templateVars = {
     title: 'BookedIn || Author', author: Author.get(req.params.id)

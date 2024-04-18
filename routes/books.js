@@ -5,7 +5,6 @@ const Author = require('../models/author');
 const Genre = require('../models/genre');
 const BookUser = require('../models/book_user');
 const Comment = require('../models/comment');
-
 const bodyParser = require('body-parser');
 /*
 router.get('/', async (req, res, next) => {
@@ -14,25 +13,26 @@ router.get('/', async (req, res, next) => {
  });
 
 */
-router.get('/', function(req, res, next) {
-  const books = Book.all
+router.get('/', async (req, res, next) => {
+  const books = await Book.all()
   res.render('books/index', { title: 'BookedIn || Books', books: books });
 });
 
 
 router.get('/edit', async (req, res, next) => {
-  let bookIndex = req.query.id;
-  let book = Book.get(bookIndex);
-  res.render('books/form', { title: 'BookedIn || Books', book: book, bookIndex: bookIndex, authors: Author.all, genres: Genre.all });
+  let bookId = req.query.id;
+  let book = await Book.get(bookId);
+  book.authorIds = (await Author.allForBook(book)).map(author => author.id);
+  res.render('books/form', { title: 'BookedIn || Books', book: book, authors: await Author.all(), genres: await Genre.all() });
 });
 
 router.get('/form', async (req, res, next) => { 
-  res.render('books/form', { title: 'BookedIn || Books', authors: Author.all, genres: Genre.all });
+  res.render('books/form', { title: 'BookedIn || Books', authors: await Author.all, genres: await Genre.all });
 });
 
 router.post('/upsert', async (req, res, next) => {
   console.log('body: ' + JSON.stringify(req.body))
-  Book.upsert(req.body);
+  await Book.upsert(req.body);
   let createdOrupdated = req.body.id ? 'updated' : 'created';
   req.session.flash = {
     type: 'info',
@@ -46,19 +46,27 @@ router.post('/upsert', async (req, res, next) => {
 router.get('/show/:id', async (req, res, next) => {
   let templateVars = {
     title: 'BookedIn || Books',
-    book: Book.get(req.params.id),
+    book: await Book.get(req.params.id),
     bookId: req.params.id,
-    statuses: BookUser.statuses
+    statuses: BookUser.statuses,
+    Comments: Comment.AllForBook(req.params.id)
+
   }
+
+  /*
   if (templateVars.book.authorIds) {
     templateVars['authors'] = templateVars.book.authorIds.map((authorId) => Author.get(authorId));
   }
+*/
+  templateVars.book.authors = await Author.allForBook(templateVars.book);
+
   if (templateVars.book.genreId) {
-    templateVars['genre'] = Genre.get(templateVars.book.genreId);
+    templateVars['genre'] = await Genre.get(templateVars.book.genreId);
   }
   if (req.session.currentUser) {
-    templateVars['bookUser'] = BookUser.get(req.params.id, req.session.currentUser.email);
+    templateVars['bookUser'] = await BookUser.get(templateVars.book, req.session.currentUser);
   }
+
   if (req.session.currentUser) {
     templateVars['comments'] = Comment.AllForBook(req.params.id, req.session.currentUser.email);
   }

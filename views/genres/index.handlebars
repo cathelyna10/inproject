@@ -3,8 +3,7 @@
 
 {{#each genres}}
 <li>
-  <a href="/genres/show/{{@index}}"> {{this.genreName}} </a>
+<a href="/genres/form?id={{this.id}}">{{this.id}}: {{this.name}} </a>
 
-  <a href="/genres/edit?id={{@index}}">~ edit</a>
 </li>
 {{/each}}

@@ -1,12 +1,12 @@
 <h1>{{book.bookName}}</h1>
-{{#if authors}}
- Written by {{#each authors}}{{this.firstName}} {{this.lastName}}{{#unless @last}}, {{/unless}}{{/each}}
+{{#if book.authors}}
+ Written by {{#each book.authors}}{{this.firstName}} {{this.lastName}}{{#unless @last}}, {{/unless}}{{/each}}
 {{/if}}
 
 {{! if there is a genre, then add it in. But if no genre, only include publishing date}}
 {{#if genre}}
 <p>
-  Originally published in {{book.publishingYear}}, under the genre of {{genre.genreName}}
+  Originally published in {{book.publishingYear}}, under the genre of {{genre.name}}
 </p>
 
 {{else}}
@@ -19,11 +19,14 @@
 <div>
   <form action="/books_users/upsert" role="form" method="post">
     <input type="hidden" name="_csrf" value="{{_csrfToken}}">
-    <input type="hidden" name="bookId" value="{{bookId}}">
-    <input type="hidden" name="userEmail" value="{{currentUser.email}}">
+    <input type="hidden" name="bookId" value="{{book.id}}">
+    <input type="hidden" name="userId" value="{{currentUser.id}}">
+       {{#if bookUser}}
+      <input type="hidden" name="id" value="{{bookUser.id}}">
+    {{/if}}
     <label for="status">Status</label>
     <select name="status" id="status">
-      {{#unless (and bookUser bookUser.status)}}
+      {{#unless (and bookUser bookUser.readStatus)}}
         <option disabled selected value>-- select status --</option>
       {{/unless}}
       {{#each statuses}}
@@ -38,7 +41,7 @@
 <div>
   <form id="commentForm" action="/comments/upsert" role="form" method="post">
     <input type="hidden" name="_csrf" value="{{_csrfToken}}">
-    <input type="hidden" name="bookId" value="{{bookId}}">
+    <input type="hidden" name="bookId" value="{{book.id}}">
     <input type="hidden" name="userEmail" value="{{userEmail}}">
     <label for="commentText">Comment</label>
     <textarea id="commentText" name="comment" rows="1" cols="10"></textarea>
