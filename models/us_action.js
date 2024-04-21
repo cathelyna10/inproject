@@ -1,14 +1,24 @@
 const db = require('../database')
 
 exports.all = async () => {
- const { rows } = await db.getPool().query("select * from us_action order by id");
- return db.camelize(rows);
+  try {
+    const { rows } = await db.getPool().query("select * from us_action order by id");
+    return db.camelize(rows);
+  } catch (error) {
+    console.error('Error fetching all us_actions:', error);
+    throw error;  // Rethrowing the error is often necessary if you have error handling middleware in your Express setup
+  }
 }
 
 exports.get = async (id) => {
-  const { rows } = await db.getPool().query("select * from us_action where id = $1", [id])
-  return db.camelize(rows)[0]
- }
+  try {
+    const { rows } = await db.getPool().query("select * from us_action where id = $1", [id]);
+    return db.camelize(rows)[0];
+  } catch (error) {
+    console.error(`Error fetching us_action with id ${id}:`, error);
+    throw error;
+  }
+}
 /*const
  authors = [
     {firstName: "Tiziana", lastName: "Terranova"},
@@ -69,8 +79,8 @@ exports.get = async (id) => {
   exports.add = (author) => {
     authors.push(author);
   }
-    */
+   
   exports.create = async (firstName, lastName) => {
     return db.getPool().query("INSERT INTO us_action(us_action, action_description) VALUES($1, $2) RETURNING *", [us_action, action_description]);
    }
-   
+    */

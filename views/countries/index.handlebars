@@ -4,6 +4,7 @@
 
 {{#each}}
 <li>
-<h2>{{country.country_name}} {{country.country_name}}</h2>
+<a href="/books/show/{{this.id}}">{{this.id}} - {{this.country_name}} </a>
+
 </li>
 {{/each}}
