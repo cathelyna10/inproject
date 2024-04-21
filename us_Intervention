@@ -1,0 +1,49 @@
+drop database if exists db_us;
+
+create database db_us;
+
+\c db_us
+
+CREATE TABLE "us_action" (
+  "ID" int,
+  "us_action" varchar,
+  "action_description" varchar,
+  PRIMARY KEY ("ID")
+);
+
+CREATE TABLE "country" (
+  "ID" serial,
+  "country_name" varchar,
+  "country_id" int,
+  PRIMARY KEY ("ID")
+);
+
+CREATE TABLE "individuals" (
+  "ID" serial,
+  "individual_name" varchar,
+  "individual_role" varchar,
+  "individual_id" int,
+  PRIMARY KEY ("ID")
+);
+
+CREATE TABLE "event" (
+  "ID" serial,
+  "event_year" int,
+  "event_name" varchar, 
+  "event_id" int, 
+  PRIMARY KEY ("ID")
+);
+
+CREATE TABLE "individuals_event" (
+  "ID" serial,
+  "event_id" int, 
+  "individual_id" int,
+  PRIMARY KEY ("ID")
+);
+
+CREATE TABLE "event_country" (
+  "ID" serial,
+  "event_id" int,
+  "country_id" int,
+  PRIMARY KEY ("ID")
+);

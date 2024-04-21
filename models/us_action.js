@@ -1,13 +1,16 @@
-
 const db = require('../database')
 
-
 exports.all = async () => {
- const { rows } = await db.getPool().query("select * from authors order by id");
+ const { rows } = await db.getPool().query("select * from us_action order by id");
  return db.camelize(rows);
 }
 
-/*const authors = [
+exports.get = async (id) => {
+  const { rows } = await db.getPool().query("select * from us_action where id = $1", [id])
+  return db.camelize(rows)[0]
+ }
+/*const
+ authors = [
     {firstName: "Tiziana", lastName: "Terranova"},
     {firstName: "Bifo", lastName: "Berardi"},
     {firstName: "Norbert", lastName: "Weiner"},
@@ -20,26 +23,30 @@ exports.all = async () => {
       exports.add(author);
     }
   }
-  */
+ 
 
-  exports.upsert = async (author) => {
-    if (author.id) {
-      return exports.update(author.id, author.firstName, author.lastName)
+  exports.upsert = async (us_action) => {
+    if (us_action.id) {
+      return exports.update(us_action.id, us_action.us, us_action.action_description)
     }
-    return exports.create(author.firstName, author.lastName)
+    return exports.create(us_action.us_action, us_action.action_description)
    }
    
-  exports.update = async (id, firstName, lastName) => {
-    return db.getPool().query("UPDATE authors SET first_name = $1, last_name = $2 where id = $3 RETURNING *", [firstName, lastName, id]);
+  exports.update = async (id, us_action, action_description) => {
+    return db.getPool().query("UPDATE us_action SET us_action = $1, action_description = $2 where id = $3 RETURNING *", [us_action, action_description, id]);
    }
-   exports.allForBook = async (book) => {
+   
+    */
+   /*exports.allForBook = async (book) => {
     const { rows } = await db.getPool().query(`
-      select authors.* from authors
+      select us_action.* from us_action
       JOIN authors_books on authors_books.author_id = authors.id
       where authors_books.book_id = $1;`, [book.id]);
     return db.camelize(rows);
   }
-  
+  */
+
+
   /*
   exports.update = (author) => {
     authors[author.id] = author;
@@ -51,10 +58,7 @@ exports.all = async () => {
 
   // exports.all = authors
   
-  exports.get = async (id) => {
-    const { rows } = await db.getPool().query("select * from authors where id = $1", [id])
-    return db.camelize(rows)[0]
-   }
+
    /*
   exports.get = (idx) => {
     return db[idx];
@@ -67,6 +71,6 @@ exports.all = async () => {
   }
     */
   exports.create = async (firstName, lastName) => {
-    return db.getPool().query("INSERT INTO authors(first_name, last_name) VALUES($1, $2) RETURNING *", [firstName, lastName]);
+    return db.getPool().query("INSERT INTO us_action(us_action, action_description) VALUES($1, $2) RETURNING *", [us_action, action_description]);
    }
    

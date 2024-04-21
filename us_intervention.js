@@ -5,7 +5,7 @@ const { credentials } = require('./config')
 const expressSession = require('express-session')
 const csrf = require('csurf')
 //proper form handling
-const booksUsersRouter = require('./routes/books_users');
+//const booksUsersRouter = require('./routes/books_users');
 
 const path = require('path');
 
@@ -56,23 +56,23 @@ var handlebars = require('express-handlebars').create({
 
 // ./ means from where i am rn, go to there. .means where i
 const indexRouter = require('./routes/index');
-const authorsRouter = require('./routes/authors');
-const booksRouter = require('./routes/books');
-const genresRouter = require('./routes/genres');
-const usersRouter = require('./routes/users');
-const commentsRouter = require('./routes/comments');
+const us_actionsRouter = require('./routes/us_actions');
+const eventsRouter = require('./routes/events');
+const countriesRouter = require('./routes/countries');
+//const usersRouter = require('./routes/users');
+//const commentsRouter = require('./routes/comments');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/', indexRouter);
-app.use('/authors', authorsRouter);
-app.use('/books', booksRouter);
-app.use('/genres', genresRouter);
-app.use('/users', usersRouter);
-app.use('/books_users', booksUsersRouter);
-app.use('/comments', commentsRouter);
+app.use('/us_actions', us_actionsRouter);
+app.use('/events', eventsRouter);
+app.use('/countries', countriesRouter);
+//app.use('/users', usersRouter);
+//app.use('/books_users', booksUsersRouter);
+//app.use('/comments', commentsRouter);
 app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')))
 
 

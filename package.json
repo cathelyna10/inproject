@@ -1,5 +1,5 @@
 {
-  "name": "bookin",
+  "name": "us_intervention",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -14,8 +14,8 @@
     "pg": "^8.11.3"
   },
   "scripts": {
-    "start": "node ./bookin.js",
-    "dev": "nodemon ./bookin.js"
+    "start": "node ./us_intervention.js",
+    "dev": "nodemon ./us_intervention.js"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"

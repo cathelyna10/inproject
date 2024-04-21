@@ -2,13 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'BookedIn' });
+    res.render('index', { title: 'Imperial Footprints' });
 });
 module.exports = router;
 
-router.get('/', function(req, res, next) {
-    res.render('index');
-  });
+
   
 
 //this file just exports

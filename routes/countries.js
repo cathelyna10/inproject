@@ -1,15 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const Book = require('../models/book');
-const Author = require('../models/author');
-const Genre = require('../models/genre');
+const Event = require('../models/event');
+const US_action = require('../models/us_action');
+const Country = require('../models/country');
 
 const bodyParser = require('body-parser');
 
 router.get('/', async (req, res, next) => {
-  let genres = await Genre.all();
-  res.render('genres/index', { title: 'BookedIn || Genres', genres: genres });
+  let countries = await Country.all();
+  res.render('countries/index', { title: 'Imperial Footprints || Country', countries: countries });
 });
+
+router.get('/show/:id', async (req, res, next) => {
+  let templateVars = {
+    title: 'Imperial Footprints || Countries ', country: Country.get(req.params.id)
+  }
+  if (templateVars.country.countryId) {
+    templateVars['country'] = Country.get(templateVars.country.countryId);
+  }
+  res.render('countries/show', templateVars);
+});
+
+module.exports = router;
+
 
 /*
 router.get('/edit', async (req, res, next) => {
@@ -22,13 +35,13 @@ router.get('/edit', async (req, res, next) => {
 router.get('/form', async (req, res, next) => {
   res.render('genres/form', { title: 'BookedIn || Genres', books: Book.all });
 });
-*/
+
 
 router.get('/form', async (req, res, next) => {
-  let templateVars = { title: 'BookedIn || Genres' }
+  let templateVars = { title: 'Imperial Footprints || Countries' }
   if (req.query.id) {
-    let genre = await Genre.get(req.query.id)
-    if (genre) {templateVars['genre'] = genre}
+    let country = await Country.get(req.query.id)
+    if (genre) {templateVars['country'] = country}
   }
   res.render('genres/form', templateVars);
 });
@@ -51,18 +64,4 @@ router.post('/upsert', async (req, res, next) => {
   res.redirect(303, '/genres');
 });
 */
-router.get('/show/:id', async (req, res, next) => {
-  let templateVars = {
-    title: 'BookedIn || Genres', genre: Genre.get(req.params.id)
-  }
-  if (templateVars.genre.genreId) {
-    templateVars['genre'] = Genre.get(templateVars.genre.genreId);
-  }
-  res.render('genres/show', templateVars);
-});
-
-
-
-module.exports = router;
-
 
