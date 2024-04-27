@@ -1,24 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const Event = require('../models/event');
-const US_action = require('../models/us_action');
 const Country = require('../models/country');
 
-const bodyParser = require('body-parser');
 
-router.get('/', async (req, res, next) => {
-  let countries = await Country.all();
-  res.render('countries/index', { title: 'Imperial Footprints || Country', countries: countries });
+router.get('/', async (req, res) => {
+  try {
+    let countries = await Country.all();
+    res.render('countries/index', { title: 'List of Countries', countries: countries });
+  } catch (error) {
+    console.error("Failed to retrieve countries:", error);
+    res.status(500).send("Error accessing countries data.");
+  }
 });
 
-router.get('/show/:id', async (req, res, next) => {
-  let templateVars = {
-    title: 'Imperial Footprints || Countries ', country: Country.get(req.params.id)
+router.get('/show/:id', async (req, res) => {
+  try {
+    let country = await Country.get(req.params.id); 
+    if (!country) {
+      return res.status(404).send("Country not found");
+    }
+    let templateVars = {
+      title: 'Imperial Footprints || Countries',
+      country: country
+    };
+    res.render('countries/show', templateVars);
+  } catch (error) {
+    console.error(`Failed to fetch country with id ${req.params.id}:`, error);
+    res.status(500).send("Error retrieving country data.");
   }
-  if (templateVars.country.countryId) {
-    templateVars['country'] = Country.get(templateVars.country.countryId);
-  }
-  res.render('countries/show', templateVars);
 });
 
 module.exports = router;

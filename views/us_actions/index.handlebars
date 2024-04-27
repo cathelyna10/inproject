@@ -1,9 +1,10 @@
-<h1>US Actions</h1>
+<h1>US Action Glossary</h1>
+<a href="/us_actions/form"></a>
+<h2>A glossary list of US Actions</h2>
 
-<h2>A list of countries interfered by the United States</h2>
-
-{{#each}}
+{{#each countries}}
 <li>
-<h2>{{us_action.us_action}} {{us_action.us_action}}</h2>
+<a href="/us_actions/form?id={{this.id}}">{{this.actionName}}, {{this.actionDescription}} </a>
+
 </li>
 {{/each}}

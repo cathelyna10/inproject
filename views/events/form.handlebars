@@ -1,0 +1,9 @@
+<h1>Events</h1>
+
+  {{#if event}}
+    <div>
+      <h2>{{event.event_name}},{{event.event_year}}</h2>
+      <input type="hidden" name="id" value="{{event.id}}">
+    </div>
+  {{/if}}
+  

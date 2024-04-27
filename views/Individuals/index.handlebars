@@ -1,0 +1,10 @@
+<h1>Individuals</h1>
+<a href="/individuals/form"></a>
+<h2>A list of individuals involved with the Events</h2>
+
+{{#each individuals}}
+<li>
+<a href="/individuals/form?id={{this.id}}">{{this.individualName}}, {{this.individualRole}} </a>
+
+</li>
+{{/each}}

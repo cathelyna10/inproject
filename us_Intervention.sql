@@ -5,45 +5,43 @@ create database us_intervention;
 \c us_intervention
  
 CREATE TABLE "us_action" (
-  "ID" serial,
-  "us_action" varchar,
+  "id" serial,
+  "action_name" varchar,
   "action_description" varchar,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );
 
 CREATE TABLE "country" (
-  "ID" serial,
+  "id" serial,
   "country_name" varchar,
-  "country_id" int,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );
 
-CREATE TABLE "individuals" (
-  "ID" serial,
+CREATE TABLE "individual" (
+  "id" serial,
   "individual_name" varchar,
   "individual_role" varchar,
-  "individual_id" int,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );
 
 CREATE TABLE "event" (
-  "ID" serial,
+  "id" serial,
   "event_year" int,
   "event_name" varchar, 
-  "event_id" int, 
-  PRIMARY KEY ("ID")
+  "us_action_id" int,
+  PRIMARY KEY ("id")
 );
 
-CREATE TABLE "individuals_event" (
-  "ID" serial,
+CREATE TABLE "individual_event" (
+  "id" serial,
   "event_id" int, 
   "individual_id" int,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );
 
 CREATE TABLE "event_country" (
-  "ID" serial,
+  "id" serial,
   "event_id" int,
   "country_id" int,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );

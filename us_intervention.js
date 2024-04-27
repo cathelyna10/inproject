@@ -10,10 +10,22 @@ const csrf = require('csurf')
 const path = require('path');
 
 const bodyParser = require('body-parser')
+
+// ./ means from where i am rn, go to there. 
+const indexRouter = require('./routes/index');
+const us_actionsRouter = require('./routes/us_actions');
+const eventsRouter = require('./routes/events');
+const countriesRouter = require('./routes/countries');
+const individualsRouter = require('./routes/individuals');
+
+//const usersRouter = require('./routes/users');
+//const commentsRouter = require('./routes/comments');
+
 const app = express()
 const port = 3000
 
 const cookieParser = require('cookie-parser')
+
 
 
 app.use(cookieParser(credentials.cookieSecret));
@@ -54,13 +66,6 @@ var handlebars = require('express-handlebars').create({
   }
 });
 
-// ./ means from where i am rn, go to there. .means where i
-const indexRouter = require('./routes/index');
-const us_actionsRouter = require('./routes/us_actions');
-const eventsRouter = require('./routes/events');
-const countriesRouter = require('./routes/countries');
-//const usersRouter = require('./routes/users');
-//const commentsRouter = require('./routes/comments');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -70,6 +75,7 @@ app.use('/', indexRouter);
 app.use('/us_actions', us_actionsRouter);
 app.use('/events', eventsRouter);
 app.use('/countries', countriesRouter);
+app.use('/individuals', individualsRouter);
 //app.use('/users', usersRouter);
 //app.use('/books_users', booksUsersRouter);
 //app.use('/comments', commentsRouter);

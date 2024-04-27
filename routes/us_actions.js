@@ -1,24 +1,35 @@
 const express = require('express');
 const router = express.Router();
-const Event = require('../models/event');
 const US_action = require('../models/us_action');
-const Country = require('../models/country');
 
-const bodyParser = require('body-parser');
 
-router.get('/', async (req, res, next) => {
-  let us_actions = await US_action.all();
-  res.render('us_actions/index', { title: 'Imperial Footprints || US Actions', us_actions: us_actions });
+
+
+router.get('/', async (req, res) => {
+  try {
+    let countries = await US_action.all();
+    res.render('us_actions/index', { title: 'List of US Action', countries: countries });
+  } catch (error) {
+    console.error("Failed to retrieve us actions:", error);
+    res.status(500).send("Error accessing us actions data.");
+  }
 });
 
-router.get('/show/:id', async (req, res, next) => {
-  let templateVars = {
-    title: 'Imperial Footprints || US Actions ', us_actions: US_action.get(req.params.id)
+router.get('/show/:id', async (req, res) => {
+  try {
+    let us_action = await US_action.get(req.params.id); 
+    if (!us_action) {
+      return res.status(404).send("US Actions not found");
+    }
+    let templateVars = {
+      title: 'Imperial Footprints || US Actions',
+      us_action: us_action
+    };
+    res.render('us_actions/show', templateVars);
+  } catch (error) {
+    console.error(`Failed to fetch us_action with id ${req.params.id}:`, error);
+    res.status(500).send("Error retrieving us_action data.");
   }
-  if (templateVars.us_action.us_actionId) {
-    templateVars['us_action'] = US_action.get(templateVars.us_action.us_actionId);
-  }
-  res.render('us_actions/show', templateVars);
 });
 
 module.exports = router;
