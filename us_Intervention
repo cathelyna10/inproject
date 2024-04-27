@@ -14,15 +14,13 @@ CREATE TABLE "us_action" (
 CREATE TABLE "country" (
   "ID" serial,
   "country_name" varchar,
-  "country_id" int,
   PRIMARY KEY ("ID")
 );
 
-CREATE TABLE "individuals" (
+CREATE TABLE "individual" (
   "ID" serial,
   "individual_name" varchar,
   "individual_role" varchar,
-  "individual_id" int,
   PRIMARY KEY ("ID")
 );
 
@@ -30,7 +28,7 @@ CREATE TABLE "event" (
   "ID" serial,
   "event_year" int,
   "event_name" varchar, 
-  "event_id" int, 
+  "us_action_id"
   PRIMARY KEY ("ID")
 );
 
