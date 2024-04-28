@@ -1,10 +1,14 @@
 <h1>Events</h1>
 <a href="/events/form"></a>
+<a href="/events/event"></a>
 <h2>A list of events the United States was involved in</h2>
 
 {{#each events}}
 <li>
-<a href="/events/form?id={{this.id}}">{{this.id}}-{{this.eventName}} </a>
-
+  <a href="/events/show/{{this.id}}"><b>{{this.eventYear}}</b>  -  {{this.eventName}} </a>
 </li>
 {{/each}}
+
+
+<br>
+<br>

@@ -1,21 +1,24 @@
-const db = require('../database')
+const db = require('../database');
 
 exports.all = async () => {
-  const { rows } = await db.getPool().query("select * from event order by id");
+  const { rows } = await db.getPool().query("SELECT * FROM event ORDER BY id");
   return db.camelize(rows);
-}
-  
+};
+
 exports.get = async (id) => {
-  const { rows } = await db.getPool().query("select * from event where id = $1", [id])
-  return db.camelize(rows)[0]
-}
-exports.allForEvent = async (event) => {
+  const { rows } = await db.getPool().query("SELECT * FROM event WHERE id = $1", [id]);
+  return db.camelize(rows)[0];
+};
+
+exports.allForEvent = async (eventId) => {
   const { rows } = await db.getPool().query(`
-    select us_action.* from event
-    JOIN event_country on event_country.country_id = countries.id
-    where event_country.event_id = $1;`, [event.id]);
+    SELECT us_action.* FROM event 
+    JOIN us_action ON event.us_action_id = us_action.id
+    WHERE event.id = $1;
+  `, [eventId]); 
   return db.camelize(rows);
-}
+};
+
 
       //await addAuthorsToBook(newBook, book.authorIds)
     //return newBook
@@ -103,4 +106,4 @@ exports.allForEvent = async (event) => {
     books.push(book);
   }
 
-  exports.all = books*/
+exports.all = books*/
