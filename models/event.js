@@ -12,12 +12,24 @@ exports.get = async (id) => {
 
 exports.allForEvent = async (eventId) => {
   const { rows } = await db.getPool().query(`
-    SELECT us_action.* FROM event 
+    SELECT event.*,
+      us_action.id AS usActionId,
+      us_action.name AS usActionName,
+      us_action.description AS usActionDescription,
+      country.id AS countryId,
+      country.country_name AS countryNameFROM event 
     JOIN us_action ON event.us_action_id = us_action.id
     WHERE event.id = $1;
+
+    
   `, [eventId]); 
   return db.camelize(rows);
 };
+
+
+
+
+
 
 
       //await addAuthorsToBook(newBook, book.authorIds)

@@ -1,8 +1,10 @@
-<h1>{{event.eventName}} ({{event.eventYear}})</h1>
-<p><strong>Country:</strong> {{country.countryName}}</p>
-<h2>US Actions</h2>
+<h1>{{this.title}} ({{this.event.eventName}})</h1>
+<h3>Country</h3> 
 <ul>
-  {{#each usActions}}
-  <li>{{this.actionName}}</li>
-  {{/each}}
+{{this.event.countryName}}
 </ul>
+<h3>US Actions</h3>
+<ul>
+{{this.event.actionName}}  -  {{this.event.actionDescription}}
+</ul>
+
