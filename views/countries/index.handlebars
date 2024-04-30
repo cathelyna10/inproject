@@ -1,10 +1,28 @@
+<style>
+    
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+li::marker {
+  color: #28a745;
+}
+  p, h1, h2, h3, a, nav-link {
+    color: #28a745;}
+</style>
+
 <h1>Countries</h1>
 <a href="/countries/form"></a>
 <h2>A list of countries interfered by the United States</h2>
 
 {{#each countries}}
 <li>
-<a href="/countries/form?id={{this.id}}">{{this.countryName}} </a>
+<p>{{this.countryName}} </p>
 
 </li>
 {{/each}}

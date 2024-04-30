@@ -12,30 +12,77 @@ exports.get = async (id) => {
 
 exports.allForEvent = async (eventId) => {
   const { rows } = await db.getPool().query(`
-    SELECT event.*,
-      us_action.id AS usActionId,
-      us_action.name AS usActionName,
-      us_action.description AS usActionDescription,
-      country.id AS countryId,
-      country.country_name AS countryNameFROM event 
-    JOIN us_action ON event.us_action_id = us_action.id
-    WHERE event.id = $1;
-
-    
+  SELECT e.id, e.event_name, e.event_year, c.country_name, ua.action_name, ua.action_description, i.individual_name, i.individual_role 
+FROM 
+  event e 
+  JOIN event_country ec ON e.id = ec.event_id
+  JOIN country c ON ec.country_id = c.id
+  JOIN us_action ua ON e.us_action_id = ua.id
+  LEFT JOIN individual_event ie ON e.id = ie.event_id  -- Changed to LEFT JOIN
+  LEFT JOIN individual i ON ie.individual_id = i.id    -- Changed to LEFT JOIN
+WHERE 
+  e.id = $1;
   `, [eventId]); 
   return db.camelize(rows);
 };
 
 
+exports.allForEvent = async (eventId) => {
+  try {
+    const { rows } = await db.getPool().query(`
+      SELECT e.id, e.event_name, e.event_year, c.country_name, ua.action_name, ua.action_description, i.individual_name, i.individual_role 
+      FROM event e 
+      JOIN event_country ec ON e.id = ec.event_id
+      JOIN country c ON ec.country_id = c.id
+      JOIN us_action ua ON e.us_action_id = ua.id
+      LEFT JOIN individual_event ie ON e.id = ie.event_id
+      LEFT JOIN individual i ON ie.individual_id = i.id
+      WHERE e.id = $1;
+    `, [eventId]); 
 
+    if (!rows.length) return null; // No event found
 
+    // Combine data into one object if multiple rows are returned due to multiple countries
+    const event = {
+      id: rows[0].id,
+      eventName: rows[0].eventName,
+      eventYear: rows[0].eventYear,
+      actionName: rows[0].actionName,
+      actionDescription: rows[0].actionDescription,
+      countries: [],
+      individuals: []
+    };
 
+    // Extract unique countries and individuals
+    const countrySet = new Set();
+    const individualSet = new Set();
 
+    rows.forEach(row => {
+      if (row.countryName && !countrySet.has(row.countryName)) {
+        countrySet.add(row.countryName);
+        event.countries.push({ name: row.countryName });
+      }
+      if (row.individualName && !individualSet.has(row.individualName)) {
+        individualSet.add(row.individualName);
+        event.individuals.push({
+          name: row.individualName,
+          role: row.individualRole
+        });
+      }
+    });
 
+    return db.camelize(event);
+  } catch (error) {
+    console.error('Failed to retrieve event details:', error);
+    throw error; // Propagate the error
+  }
+};
+
+ /*
       //await addAuthorsToBook(newBook, book.authorIds)
     //return newBook
       
-    /*return db.getPool()
+   return db.getPool()
     exports.add = async (event) => {
       const { rows } = await db.getPool()
   

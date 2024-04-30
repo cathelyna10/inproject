@@ -1,1 +1,1 @@
-select * from individual
+select event.*

@@ -1,3 +1,20 @@
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+li::marker {
+  color: #28a745;
+}
+  p, h1, h2, h3, a, nav-link {
+    color: #28a745;}
+</style>
+<div class="event">
 <h1>Events</h1>
 <a href="/events/form"></a>
 <a href="/events/event"></a>
@@ -8,7 +25,7 @@
   <a href="/events/show/{{this.id}}"><b>{{this.eventYear}}</b>  -  {{this.eventName}} </a>
 </li>
 {{/each}}
-
+</div>
 
 <br>
 <br>

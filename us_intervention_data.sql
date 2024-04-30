@@ -1,47 +1,3 @@
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1900', 'Boxer Rebellion in China', 3);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1901', 'Platt Amendment in Cuba', 3);  
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1903', 'Panama Revolution supported by US', 3);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1904', 'Dominican Republic financial intervention', 3);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1906', 'Cuba occupation by US forces', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1907', 'Nicaragua intervention to protect US interests', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1911', 'US troops occupy Honduras', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1912', 'US troops land in Nicaragua to support conservative forces', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1913', 'US intervention in Mexico during Mexican Revolution', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1914', 'US forces occupy Veracruz, Mexico', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1916', 'US military intervention in the Dominican Republic', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1917', 'US enters World War I', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1918', 'US intervention in Russia', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1919', 'US troops sent to Honduras', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1920', 'US involvement in Guatemala', 3);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1922', 'US intervention in Turkey during Turkish War of Independence', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1924', 'US Marines sent to Honduras', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1925', 'US Marines invade Panama', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1926', 'Nicaraguan civil war intervention', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1934', 'Good Neighbor Policy implementation begins', 3);  
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1941', 'Entry into World War II after Pearl Harbor', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1950', 'Korean War begins', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1961', 'Bay of Pigs Invasion in Cuba', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1964', 'Gulf of Tonkin Resolution escalates Vietnam War', 1); 
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1979', 'Iran Hostage Crisis begins', 3);  
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1983', 'Grenada invaded in Operation Urgent Fury', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1989', 'Invasion of Panama to oust Manuel Noriega', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1990', 'Gulf War to expel Iraqi forces from Kuwait', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1993', 'US involvement in Somalia, Battle of Mogadishu', 7); 
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1999', 'NATO bombing of Yugoslavia over Kosovo', 1); 
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2001', 'Invasion of Afghanistan following September 11 attacks', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2003', 'Invasion of Iraq based on weapons of mass destruction claims', 2);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2011', 'Military intervention in Libya', 1); 
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2014', 'Intervention against ISIS in Iraq and Syria', 5);  
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2015', 'Support for Saudi-led coalition in Yemen begins', 3);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2016', 'Airstrikes against Al-Shabaab in Somalia increase', 1);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2017', 'Missile strikes against Shayrat Airbase in Syria in response to chemical attacks', 1);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2018', 'Continued counter-terrorism operations in Africa, including Somalia', 5);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2019', 'Cyber operation against Iran to disable rocket and missile launch systems', 4);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2020', 'Airstrike killing Iranian General Qasem Soleimani', 1);
-INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2023', 'Support for Israeli to invade and commit genocide in Palestine', 3);
-
-
-
 INSERT INTO country (country_name) VALUES ('China');
 INSERT INTO country (country_name) VALUES ('Colombia/Panama');
 INSERT INTO country (country_name) VALUES ('Guam');
@@ -84,6 +40,55 @@ INSERT INTO country (country_name) VALUES ('Afghanistan');
 INSERT INTO country (country_name) VALUES ('Macedonia');
 INSERT INTO country (country_name) VALUES ('Syria');
 INSERT INTO country (country_name) VALUES ('Palestine');
+INSERT INTO country (country_name) VALUES ('Germany');
+INSERT INTO country (country_name) VALUES ('Pakistan');
+INSERT INTO country (country_name) VALUES ('Saudi Arabia');
+INSERT INTO country (country_name) VALUES ('Yemen');
+INSERT INTO country (country_name) VALUES ('Kuwait');
+
+
+
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1900', 'Boxer Rebellion in China', 3);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1901', 'Platt Amendment in Cuba', 3);  
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1903', 'Panama Revolution supported by US', 3);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1904', 'Dominican Republic financial intervention', 3);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1906', 'Cuba occupation by US forces', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1907', 'Nicaragua intervention to protect US interests', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1911', 'US troops occupy Honduras', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1912', 'US troops land in Nicaragua to support conservative forces', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1913', 'US intervention in Mexico during Mexican Revolution', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1914', 'US forces occupy Veracruz, Mexico', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1916', 'US military intervention in the Dominican Republic', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1917', 'US enters World War I', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1918', 'US intervention in Russia', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1919', 'US troops sent to Honduras', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1920', 'US involvement in Guatemala', 3);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1922', 'US intervention in Turkey during Turkish War of Independence', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1924', 'US Marines sent to Honduras', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1925', 'US Marines invade Panama', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1926', 'Nicaraguan civil war intervention', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1934', 'Good Neighbor Policy implementation begins', 3);  
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1941', 'Entry into World War II after Pearl Harbor', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1950', 'Korean War begins', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1961', 'Bay of Pigs Invasion in Cuba', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1964', 'Gulf of Tonkin Resolution escalates Vietnam War', 1); 
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1979', 'Iran Hostage Crisis begins', 3);  
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1983', 'Grenada invaded in Operation Urgent Fury', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1989', 'Invasion of Panama to oust Manuel Noriega', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1990', 'Gulf War to expel Iraqi forces from Kuwait', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1993', 'US involvement in Somalia, Battle of Mogadishu', 7); 
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('1999', 'NATO bombing of Yugoslavia over Kosovo', 1); 
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2001', 'Invasion of Afghanistan following September 11 attacks', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2003', 'Invasion of Iraq based on weapons of mass destruction claims', 2);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2011', 'Military intervention in Libya', 1); 
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2014', 'Intervention against ISIS in Iraq and Syria', 5);  
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2015', 'Support for Saudi-led coalition in Yemen begins', 3);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2016', 'Airstrikes against Al-Shabaab in Somalia increase', 1);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2017', 'Missile strikes against Shayrat Airbase in Syria in response to chemical attacks', 1);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2018', 'Continued counter-terrorism operations in Africa, including Somalia', 5);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2019', 'Cyber operation against Iran to disable rocket and missile launch systems', 4);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2020', 'Airstrike killing Iranian General Qasem Soleimani', 1);
+INSERT INTO event (event_year, event_name, us_action_id) VALUES ('2023', 'Support for Israeli to invade and commit genocide in Palestine', 3);
 
 INSERT INTO us_action (action_name, action_description) VALUES ('Airstrike', 'Targeted bombing operations conducted from the air');
 INSERT INTO us_action (action_name, action_description) VALUES ('Invasion', 'Military operation involving entry into foreign territory to achieve strategic objectives');
@@ -155,7 +160,7 @@ INSERT INTO individual_event (individual_id, event_id) VALUES (8, 25);-- Lyndon 
 INSERT INTO individual_event (individual_id, event_id) VALUES (9, 25);-- Richard Nixon during the continuation of the Vietnam War
 INSERT INTO individual_event (individual_id, event_id) VALUES (10, 25);-- Jimmy Carter during the Iran Hostage Crisis
 INSERT INTO individual_event (individual_id, event_id) VALUES (11, 27); -- Ronald Reagan and Invasion of Grenada
-INSERT INTO individual_event (individual_id, event_id) VALUES (12, 28); -- George H.W. Bush and Gulf War
+INSERT INTO individual_evenat (individual_id, event_id) VALUES (12, 28); -- George H.W. Bush and Gulf War
 INSERT INTO individual_event (individual_id, event_id) VALUES (13, 30); -- Bill Clinton and NATO bombing of Yugoslavia
 INSERT INTO individual_event (individual_id, event_id) VALUES (14, 32); -- George W. Bush and Invasion of Afghanistan
 INSERT INTO individual_event (individual_id, event_id) VALUES (14, 33); -- George W. Bush and Invasion of Iraq
@@ -180,7 +185,6 @@ INSERT INTO individual_event (individual_id, event_id) VALUES (30, 16); -- Jacob
 INSERT INTO individual_event (individual_id, event_id) VALUES (31, 25); -- Ngo Dinh Diem and Gulf of Tonkin Resolution
 INSERT INTO individual_event (individual_id, event_id) VALUES (32, 29); -- Patrice Lumumba and US involvement in Somalia
 
-
 INSERT INTO event_country (event_id, country_id) VALUES (1, 1);  -- Boxer Rebellion in China
 INSERT INTO event_country (event_id, country_id) VALUES (2, 7);  -- Platt Amendment in Cuba
 INSERT INTO event_country (event_id, country_id) VALUES (3, 2);  -- Panama Revolution supported by US
@@ -193,7 +197,8 @@ INSERT INTO event_country (event_id, country_id) VALUES (9, 8);  -- US troops la
 INSERT INTO event_country (event_id, country_id) VALUES (10, 9); -- US intervention in Mexico during Mexican Revolution
 INSERT INTO event_country (event_id, country_id) VALUES (11, 9); -- US forces occupy Veracruz, Mexico
 INSERT INTO event_country (event_id, country_id) VALUES (12, 5); -- US military intervention in the Dominican Republic
-INSERT INTO event_country (event_id, country_id) VALUES (13, 36); -- US enters World War I
+INSERT INTO event_country (event_id, country_id) VALUES (13, 17);  -- Germany -- US enters World War I
+INSERT INTO event_country (event_id, country_id) VALUES (13, 36);  -- France -- US enters World War I
 INSERT INTO event_country (event_id, country_id) VALUES (14, 11); -- US intervention in Russia
 INSERT INTO event_country (event_id, country_id) VALUES (15, 4);  -- US troops sent to Honduras (1919)
 INSERT INTO event_country (event_id, country_id) VALUES (16, 20); -- US involvement in Guatemala
@@ -201,22 +206,37 @@ INSERT INTO event_country (event_id, country_id) VALUES (17, 14); -- US interven
 INSERT INTO event_country (event_id, country_id) VALUES (18, 4);  -- US Marines sent to Honduras (1924)
 INSERT INTO event_country (event_id, country_id) VALUES (19, 2);  -- US Marines invade Panama
 INSERT INTO event_country (event_id, country_id) VALUES (20, 8);  -- Nicaraguan civil war intervention
-INSERT INTO event_country (event_id, country_id) VALUES (21, 7);  -- Good Neighbor Policy implementation begins
-INSERT INTO event_country (event_id, country_id) VALUES (22, 36); -- Entry into World War II after Pearl Harbor
+INSERT INTO event_country (event_id, country_id) VALUES (21, 2);  -- Colombia/Panama
+INSERT INTO event_country (event_id, country_id) VALUES (21, 5);  -- Dominican Republic
+INSERT INTO event_country (event_id, country_id) VALUES (21, 6);  -- Brazil
+INSERT INTO event_country (event_id, country_id) VALUES (21, 7);  -- Cuba
+INSERT INTO event_country (event_id, country_id) VALUES (21, 8);  -- Nicaragua
+INSERT INTO event_country (event_id, country_id) VALUES (21, 10); -- Haiti
+INSERT INTO event_country (event_id, country_id) VALUES (21, 9);  -- Mexico
+INSERT INTO event_country (event_id, country_id) VALUES (22, 19); -- Japan -- Entry into World War II after Pearl Harbor
+INSERT INTO event_country (event_id, country_id) VALUES (22, 43); -- Germany --Entry into World War II after Pearl Harbor
+INSERT INTO event_country (event_id, country_id) VALUES (22, 18); -- Italy -- Entry into World War II after Pearl Harbor
+INSERT INTO event_country (event_id, country_id) VALUES (22, 19); -- Philippines
+INSERT INTO event_country (event_id, country_id) VALUES (22, 20); -- Vietnam
 INSERT INTO event_country (event_id, country_id) VALUES (23, 20); -- Korean War begins
 INSERT INTO event_country (event_id, country_id) VALUES (24, 7);  -- Bay of Pigs Invasion in Cuba
 INSERT INTO event_country (event_id, country_id) VALUES (25, 20); -- Gulf of Tonkin Resolution escalates Vietnam War
 INSERT INTO event_country (event_id, country_id) VALUES (26, 16); -- Iran Hostage Crisis begins
 INSERT INTO event_country (event_id, country_id) VALUES (27, 37); -- Grenada invaded in Operation Urgent Fury
 INSERT INTO event_country (event_id, country_id) VALUES (28, 2);  -- Invasion of Panama to oust Manuel Noriega
-INSERT INTO event_country (event_id, country_id) VALUES (29, 40); -- Gulf War to expel Iraqi forces from Kuwait
-INSERT INTO event_country (event_id, country_id) VALUES (30, 40); -- US involvement in Somalia, Battle of Mogadishu
+INSERT INTO event_country (event_id, country_id) VALUES (29, 34); -- Iraq -- Gulf War to expel Iraqi forces from Kuwait
+INSERT INTO event_country (event_id, country_id) VALUES (29, 47); -- Kuwait -- Gulf War to expel Iraqi forces from Kuwait
+INSERT INTO event_country (event_id, country_id) VALUES (29, 45); -- Saudi Arabia -- Gulf War to expel Iraqi forces from Kuwait
+INSERT INTO event_country (event_id, country_id) VALUES (30, 35); -- US involvement in Somalia, Battle of Mogadishu
 INSERT INTO event_country (event_id, country_id) VALUES (31, 12); -- NATO bombing of Yugoslavia over Kosovo
-INSERT INTO event_country (event_id, country_id) VALUES (32, 41); -- Invasion of Afghanistan following September 11 attacks
+INSERT INTO event_country (event_id, country_id) VALUES (32, 39); -- Invasion of Afghanistan following September 11 attacks
+INSERT INTO event_country (event_id, country_id) VALUES (32, 42); -- Invasion of Afghanistan following September 11 attacks
 INSERT INTO event_country (event_id, country_id) VALUES (33, 40); -- Invasion of Iraq based on WMD claims
 INSERT INTO event_country (event_id, country_id) VALUES (34, 21); -- Military intervention in Libya
-INSERT INTO event_country (event_id, country_id) VALUES (35, 39); -- Intervention against ISIS in Iraq and Syria
-INSERT INTO event_country (event_id, country_id) VALUES (36, 38); -- Support for Saudi-led coalition in Yemen begins
+INSERT INTO event_country (event_id, country_id) VALUES (35, 34); -- Intervention against ISIS in Iraq and Syria
+INSERT INTO event_country (event_id, country_id) VALUES (35, 41); -- Intervention against ISIS in Iraq and Syria
+INSERT INTO event_country (event_id, country_id) VALUES (36, 45); -- Support for Saudi-led coalition in Yemen begins
+INSERT INTO event_country (event_id, country_id) VALUES (36, 46); -- Support for Saudi-led coalition in Yemen begins
 INSERT INTO event_country (event_id, country_id) VALUES (37, 35); -- Airstrikes against Al-Shabaab in Somalia increase
 INSERT INTO event_country (event_id, country_id) VALUES (38, 41); -- Missile strikes against Shayrat Airbase in Syria in response to chemical attacks
 INSERT INTO event_country (event_id, country_id) VALUES (39, 16); -- Cyber operation against Iran to disable rocket and missile launch systems

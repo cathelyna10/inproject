@@ -6,3 +6,93 @@ Through rigorous research and analysis, it sheds light on the historical context
 <h2>Consequences</h2>
 <p>The consequences of U.S. military interventions span a spectrum of outcomes, often with far-reaching implications for the countries involved, regional stability, and global geopolitics. While some interventions have been touted as successes, leading to the establishment of democratic governments or the suppression of threats to international security, others have resulted in prolonged conflicts, destabilization, and humanitarian crises. Additionally, U.S. interventions have at times fueled anti-American sentiment, eroded trust in U.S. foreign policy, and strained diplomatic relations with other nations. The economic costs of military interventions, including financial resources expended and potential long-term commitments, also merit consideration. 
 Moreover, interventions have had profound societal impacts, including the displacement of populations, loss of civilian lives, and the exacerbation of existing social and political tensions. Furthermore, the legacy of interventionism shapes perceptions of U.S. global leadership and influences the trajectory of international relations in complex and unpredictable ways. Therefore, a comprehensive understanding of the consequences of U.S. military interventions requires a nuanced assessment of their multifaceted effects on both domestic and international fronts.</p>
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid green;
+    padding: 8px;
+    text-align: left;
+    color: #28a745;
+  }
+
+  p, h1,h2,a, nav-link {
+    color: #28a745;
+  }
+
+  
+</style>
+
+<h2>US Actions</h2>
+<table>
+  <thead>
+    <tr>
+      <th>US Action Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.us_action_name}}
+    <tr>
+      <td>{{this.actionName}}</td>
+      <td>{{this.actionDescription}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<h2>Events</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Event Name</th>
+      <th>Event Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each event.individuals}}
+    <tr>
+      <td>{{this.individualName}}</td>
+      <td>{{this.individualRole}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<h2>Countries Involved</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Country Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each event.countries}}
+    <tr>
+      <td>{{this.countryName}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<h2>Individuals Involved</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Individual Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each event.individuals}}
+    <tr>
+      <td>{{this.individualName}}</td>
+      <td>{{this.individualRole}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
