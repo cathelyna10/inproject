@@ -10,48 +10,47 @@ exports.get = async (id) => {
   return db.camelize(rows)[0];
 };
 
-exports.allForEvent = async (eventId) => {
-  const { rows } = await db.getPool().query(`
-  SELECT e.id, e.event_name, e.event_year, c.country_name, ua.action_name, ua.action_description, i.individual_name, i.individual_role 
-FROM 
-  event e 
-  JOIN event_country ec ON e.id = ec.event_id
-  JOIN country c ON ec.country_id = c.id
-  JOIN us_action ua ON e.us_action_id = ua.id
-  LEFT JOIN individual_event ie ON e.id = ie.event_id  -- Changed to LEFT JOIN
-  LEFT JOIN individual i ON ie.individual_id = i.id    -- Changed to LEFT JOIN
-WHERE 
-  e.id = $1;
-  `, [eventId]); 
-  return db.camelize(rows);
+
+exports.getIndividuals = async (eventId) => {
+  try {
+    const { rows } = await db.getPool().query(`
+      SELECT i.individual_name, i.individual_role
+      FROM event e
+      JOIN individual_event ie ON e.id = ie.event_id
+      JOIN individual i ON ie.individual_id = i.id
+      WHERE e.id = $1;
+    `, [eventId]);
+    return db.camelize(rows); 
+  } catch (error) {
+    console.error('Error retrieving individuals:', error);
+    throw error;  
+  }
 };
-
-
 exports.allForEvent = async (eventId) => {
   try {
     const { rows } = await db.getPool().query(`
-      SELECT e.id, e.event_name, e.event_year, c.country_name, ua.action_name, ua.action_description, i.individual_name, i.individual_role 
-      FROM event e 
-      JOIN event_country ec ON e.id = ec.event_id
-      JOIN country c ON ec.country_id = c.id
-      JOIN us_action ua ON e.us_action_id = ua.id
-      LEFT JOIN individual_event ie ON e.id = ie.event_id
-      LEFT JOIN individual i ON ie.individual_id = i.id
-      WHERE e.id = $1;
+    SELECT e.id, e.event_name, e.event_year, c.country_name, ua.action_name, ua.action_description
+    FROM event e 
+    JOIN event_country ec ON e.id = ec.event_id
+    JOIN country c ON ec.country_id = c.id
+    JOIN us_action ua ON e.us_action_id = ua.id
+    WHERE e.id = $1;
     `, [eventId]); 
-
+    
+    
     if (!rows.length) return null; // No event found
-
-    // Combine data into one object if multiple rows are returned due to multiple countries
     const event = {
       id: rows[0].id,
-      eventName: rows[0].eventName,
-      eventYear: rows[0].eventYear,
-      actionName: rows[0].actionName,
-      actionDescription: rows[0].actionDescription,
+      eventName: rows[0].event_name,
+      eventYear: rows[0].event_year,
+      actionName: rows[0].action_name,
+      actionDescription: rows[0].action_description,
       countries: [],
       individuals: []
     };
+
+
+
 
     // Extract unique countries and individuals
     const countrySet = new Set();
@@ -78,6 +77,28 @@ exports.allForEvent = async (eventId) => {
   }
 };
 
+
+
+
+
+
+/*
+exports.allForEvent = async (eventId) => {
+  const { rows } = await db.getPool().query(`
+  SELECT e.id, e.event_name, e.event_year, c.country_name, ua.action_name, ua.action_description, i.individual_name, i.individual_role 
+FROM 
+  event e 
+  JOIN event_country ec ON e.id = ec.event_id
+  JOIN country c ON ec.country_id = c.id
+  JOIN us_action ua ON e.us_action_id = ua.id
+  LEFT JOIN individual_event ie ON e.id = ie.event_id  -- Changed to LEFT JOIN
+  LEFT JOIN individual i ON ie.individual_id = i.id    -- Changed to LEFT JOIN
+WHERE 
+  e.id = $1;
+  `, [eventId]); 
+  return db.camelize(rows);
+};
+*/
  /*
       //await addAuthorsToBook(newBook, book.authorIds)
     //return newBook

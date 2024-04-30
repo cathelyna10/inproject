@@ -11,3 +11,7 @@
 <ul>
 {{this.event.individualName}}  -  {{this.event.individualRole}}
 </ul>
+
+
+<h3>Country</h3>
+{{#each this.countries}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}

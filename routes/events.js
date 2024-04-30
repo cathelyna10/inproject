@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 router.get('/show/:id', async (req, res) => {
   try {
     const eventId = req.params.id;
@@ -54,6 +55,22 @@ router.get('/show/:id', async (req, res) => {
     res.render('events/show', { event });
   } catch (error) {
     console.error('Error fetching event details:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+router.get('/show/:id/individuals', async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const individuals = await Event.getIndividuals(eventId);
+
+    if (!individuals.length) {
+      return res.status(404).send('No individuals found for this event');
+    }
+
+    res.render('events/individuals', { title: 'Event Individuals', individuals: individuals });
+  } catch (error) {
+    console.error('Error fetching individuals:', error);
     res.status(500).send('Internal Server Error');
   }
 });
