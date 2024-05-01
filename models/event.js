@@ -36,7 +36,12 @@ exports.allForEvent = async (eventId) => {
     JOIN us_action ua ON e.us_action_id = ua.id
     WHERE e.id = $1;
     `, [eventId]); 
-    
+    return db.camelize(rows);
+  } catch (error) {
+    console.error('Failed to retrieve event details:', error);
+    throw error; // Propagate the error
+  }
+};   
  /*   
     if (!rows.length) return null; // No event found
     const event = {
@@ -70,12 +75,7 @@ exports.allForEvent = async (eventId) => {
       }
     });
 */
-    return db.camelize(rows);
-  } catch (error) {
-    console.error('Failed to retrieve event details:', error);
-    throw error; // Propagate the error
-  }
-};
+
 
 
 
