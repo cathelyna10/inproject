@@ -37,7 +37,7 @@ exports.allForEvent = async (eventId) => {
     WHERE e.id = $1;
     `, [eventId]); 
     
-    
+ /*   
     if (!rows.length) return null; // No event found
     const event = {
       id: rows[0].id,
@@ -69,8 +69,8 @@ exports.allForEvent = async (eventId) => {
         });
       }
     });
-
-    return db.camelize(event);
+*/
+    return db.camelize(rows);
   } catch (error) {
     console.error('Failed to retrieve event details:', error);
     throw error; // Propagate the error

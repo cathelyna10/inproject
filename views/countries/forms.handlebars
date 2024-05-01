@@ -1,0 +1,16 @@
+<h1>Country </h1>
+
+<form action="/countries/upsert" role="form" method="post">
+  <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+  {{#if author}}
+    <div>
+      <h2>{{country.countryName}} </h2>
+      <input type="hidden" name="id" value="{{author.id}}">
+    </div>
+  {{/if}}
+  <div>
+    <label for="country_name">Country Name</label>
+    <input type="text" id="country_name" name="countryName" {{#if country}}value="{{country.countryName}}"{{/if}}>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

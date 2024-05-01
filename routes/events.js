@@ -31,7 +31,7 @@ router.get('/show/:id', async (req, res) => {
       eventYear: eventData[0].eventYear,
       countries: new Set(),
       usActions: [],
-      individuals: []
+      individuals: await Event.getIndividuals(eventId)
     };
 
     eventData.forEach(row => {
@@ -42,12 +42,13 @@ router.get('/show/:id', async (req, res) => {
           actionDescription: row.actionDescription
         });
       }
+      /*
       if (!event.individuals.find(i => i.individualName === row.individualName)) {
         event.individuals.push({
           individualName: row.individualName,
           individualRole: row.individualRole
         });
-      }
+      }*/
     });
 
     event.countries = Array.from(event.countries); // Convert Set back to array for rendering

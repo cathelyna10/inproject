@@ -22,7 +22,9 @@ li::marker {
 
 {{#each countries}}
 <li>
-<p>{{this.countryName}} </p>
+<a href="/events/forms/{{this.id}}"><b>{{this.countryName}}</b> </a>
+  <a href="/authors/edit?id={{this.id}}">edit</a>
+
 
 </li>
 {{/each}}
