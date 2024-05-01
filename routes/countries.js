@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     res.status(500).send("Error accessing countries data.");
   }
 });
-
+/*
 router.get('/show/:id', async (req, res) => {
   try {
     let country = await Country.get(req.params.id); 
@@ -29,6 +29,37 @@ router.get('/show/:id', async (req, res) => {
     res.status(500).send("Error retrieving country data.");
   }
 });
+*/
+
+
+router.get('/show/:id', async (req, res) => {
+  try {
+    const countryId = req.params.id;
+    const country = await Country.get(countryId); 
+    if (!country) {
+      return res.status(404).send("Country not found");
+    }
+
+    // Fetch associated event data for the country
+    // Assuming you have a method to fetch events associated with a country in your Country model
+    const events = await Country.getEventsForCountry(countryId);
+
+    let templateVars = {
+      title: 'Imperial Footprints || Countries',
+      country: country,
+      events: events // Pass the events data to the template
+    };
+    res.render('countries/show', templateVars);
+  } catch (error) {
+    console.error(`Failed to fetch country with id ${req.params.id}:`, error);
+    res.status(500).send("Error retrieving country data.");
+  }
+});
+
+
+
+
+
 
 router.get('/edit', async (req, res, next) => {
   try {
