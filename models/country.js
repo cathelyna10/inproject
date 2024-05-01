@@ -4,12 +4,27 @@ exports.all = async () => {
   const { rows } = await db.getPool().query("select * from country order by id");
   return db.camelize(rows);
  }
-
+ exports.add = async (country) => {
+  return db.getPool()
+    .query("INSERT INTO country(countryName) VALUES($1) RETURNING *", [country.countryName]);
+}
 exports.get = async (id) => {
   const { rows } = await db.getPool().query("select * from country where id = $1", [id])
   return db.camelize(rows)[0]
  }
 
+ exports.update = async (country) => {
+  return await db.getPool()
+    .query("UPDATE country SET name = $1 where id = $2 RETURNING *",
+      [country.countryName, country.id]);}
+
+      exports.upsert = async (country) => {
+        if (country.id) {
+          return exports.update(country);
+        } else {
+          return exports.add(country);
+        }
+      }
  
 
 
