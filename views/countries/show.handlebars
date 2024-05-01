@@ -1,3 +1,12 @@
+<style>
+li::marker {
+  color: #28a745;
+}
+p, h1, h2, h3, a, li, ul, nav-link {
+    color: #28a745;}
+</style>
+
+<div class="country">
 <h1>{{ country.countryName }}</h1>
 {{#if events.length}}
   <p>{{ country.countryName }} was involved in the following events:</p>
@@ -9,3 +18,4 @@
 {{else}}
   <p>{{ country.countryName }} was not involved in any events.</p>
 {{/if}}
+</div>

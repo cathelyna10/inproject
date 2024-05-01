@@ -1,28 +1,15 @@
 <style>
-    
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-  }
+
 li::marker {
   color: #28a745;
 }
   p, h1, h2, h3, a, nav-link {
     color: #28a745;}
+
+    a:hover {
+  color: #0d5d20;
+}
 </style>
-
-
-
-
-
-
-
-
 
 <h1>Countries</h1>
 <a href="/Countries/form"><h2>Add a new Country</h2></a>
@@ -30,7 +17,9 @@ li::marker {
 
 {{#each countries}}
 <li>
+  <ul>
 <a href="/countries/show/{{this.id}}"><b>{{this.countryName}}</b> </a>
   <a href="/countries/edit?id={{this.id}}">edit</a>
+  </ul>
 </li>
 {{/each}}

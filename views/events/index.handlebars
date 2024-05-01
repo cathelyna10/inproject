@@ -11,8 +11,12 @@
 li::marker {
   color: #28a745;
 }
-  p, h1, h2, h3, a, nav-link {
+  p, h1, h2, h3, a, ul, li, nav-link {
     color: #28a745;}
+
+a:hover {
+  color: #0d5d20;
+}
 </style>
 
 
@@ -25,7 +29,9 @@ li::marker {
 
 {{#each events}}
 <li>
+  <ul>
   <a href="/events/show/{{this.id}}"><b>{{this.eventYear}}</b>  -  {{this.eventName}} </a>
+  </ul>
 </li>
 {{/each}}
 </div>

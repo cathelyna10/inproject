@@ -1,24 +1,25 @@
 <style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-  }
 
-  p, h1, h2, h3, a, nav-link {
+li::marker {
+  color: #28a745;
+}
+  p, h1, h2, h3, a, ul, li, nav-link {
     color: #28a745;}
 </style>
+
+
 <h1>Individuals</h1>
 <a href="/individuals/form"></a>
-<h2>A list of individuals involved with the Events</h2>
+<h2>A glossary list of individuals involved with events, the United States interfered in</h2>
 
 {{#each individuals}}
 <li>
-<a href="/individuals/form?id={{this.id}}"><b>{{this.individualName}}</b>  -   {{this.individualRole}} </a>
-
+<ul>
+<b>{{this.individualName}}</b>  -   {{this.individualRole}} </a>
+</ul>
 </li>
 {{/each}}
+
+<br>
+<br>
+

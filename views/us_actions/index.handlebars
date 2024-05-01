@@ -1,13 +1,5 @@
 <style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-  }
+
 li::marker {
   color: #28a745;
 }
@@ -21,9 +13,9 @@ li::marker {
 
 {{#each countries}}
 <li>
-
+<ul>
 <p><b>{{this.actionName}}</b>  -  {{this.actionDescription}}</p>
 <!-- <a href="/us_actions/form?id={{this.id}}"><b>{{this.actionName}}</b>  -  {{this.actionDescription}} </a>-->
-
+</ul>
 </li>
 {{/each}}

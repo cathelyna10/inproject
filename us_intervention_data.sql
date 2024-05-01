@@ -184,6 +184,8 @@ INSERT INTO individual_event (individual_id, event_id) VALUES (30, 16); -- Jacob
 INSERT INTO individual_event (individual_id, event_id) VALUES (31, 25); -- Ngo Dinh Diem and Gulf of Tonkin Resolution
 INSERT INTO individual_event (individual_id, event_id) VALUES (32, 29); -- Patrice Lumumba and US involvement in Somalia
 
+
+
 INSERT INTO event_country (event_id, country_id) VALUES (1, 1);  -- Boxer Rebellion in China
 INSERT INTO event_country (event_id, country_id) VALUES (2, 7);  -- Platt Amendment in Cuba
 INSERT INTO event_country (event_id, country_id) VALUES (3, 2);  -- Panama Revolution supported by US
@@ -196,7 +198,7 @@ INSERT INTO event_country (event_id, country_id) VALUES (9, 8);  -- US troops la
 INSERT INTO event_country (event_id, country_id) VALUES (10, 9); -- US intervention in Mexico during Mexican Revolution
 INSERT INTO event_country (event_id, country_id) VALUES (11, 9); -- US forces occupy Veracruz, Mexico
 INSERT INTO event_country (event_id, country_id) VALUES (12, 5); -- US military intervention in the Dominican Republic
-INSERT INTO event_country (event_id, country_id) VALUES (13, 17);  -- Germany -- US enters World War I
+INSERT INTO event_country (event_id, country_id) VALUES (13, 17); -- Germany -- US enters World War I
 INSERT INTO event_country (event_id, country_id) VALUES (13, 36);  -- France -- US enters World War I
 INSERT INTO event_country (event_id, country_id) VALUES (14, 11); -- US intervention in Russia
 INSERT INTO event_country (event_id, country_id) VALUES (15, 4);  -- US troops sent to Honduras (1919)
