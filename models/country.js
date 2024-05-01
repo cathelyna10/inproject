@@ -28,6 +28,21 @@ exports.upsert = async (country) => {
 }
  
 
+exports.getEventsForCountry = async (countryId) => {
+  try {
+    const { rows } = await db.getPool().query(`
+      SELECT e.event_name
+      FROM event e
+      JOIN event_country ec ON e.id = ec.event_id
+      WHERE ec.country_id = $1;
+    `, [countryId]);
+    return db.camelize(rows);
+  } catch (error) {
+    console.error('Error fetching events for country:', error);
+    throw error;
+  }
+};
+
 
 
 
