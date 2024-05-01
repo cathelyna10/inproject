@@ -6,7 +6,7 @@ exports.all = async () => {
  }
  exports.add = async (country) => {
   return db.getPool()
-    .query("INSERT INTO country(countryName) VALUES($1) RETURNING *", [country.countryName]);
+    .query("INSERT INTO country(country_name) VALUES($1) RETURNING *", [country.country_name]);
 }
 exports.get = async (id) => {
   const { rows } = await db.getPool().query("select * from country where id = $1", [id])
@@ -15,7 +15,7 @@ exports.get = async (id) => {
 
 exports.update = async (country) => {
   return await db.getPool()
-    .query("UPDATE country SET countryName = $1 where id = $2 RETURNING *",
+    .query("UPDATE country SET country_name = $1 where id = $2 RETURNING *",
       [country.country_name, country.id]); 
 }
 

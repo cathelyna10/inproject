@@ -31,36 +31,53 @@ router.get('/show/:id', async (req, res) => {
 });
 
 router.get('/edit', async (req, res, next) => {
-  let countryIndex = req.query.id;
-  let country = Country.get(countryIndex);
-  res.render('countries/form', { title: 'Imperial Footprints || Country', country: country, countryIndex: countryIndex, events: Event });
-});
-
-router.get('/form', async (req, res, next) => {
-  res.render('countries/form', { title: 'Imperial Footprints || Countries', events: Event.all });
-});
-
-
-router.get('/form', async (req, res, next) => {
-  let templateVars = { title: 'Imperial Footprints || Countries' }
-  if (req.query.id) {
-    let country = await Country.get(req.query.id)
-    if (country) {templateVars['country'] = country}
+  try {
+    const countryIndex = req.query.id;
+    const country = await Country.get(countryIndex);
+    res.render('countries/form', { title: 'Imperial Footprints || Country', country: country, countryIndex: countryIndex, events: Event });
+  } catch (error) {
+    console.error('Error fetching country for editing:', error);
+    res.status(500).send('Error fetching country for editing');
   }
-  res.render('countries/form', templateVars); 
+});
+
+
+router.get('/form', async (req, res, next) => {
+  try {
+    let templateVars = { title: 'Imperial Footprints || Countries' };
+    if (req.query.id) {
+      let country = await Country.get(req.query.id);
+      if (country) {
+        templateVars['country'] = country;
+      }
+    }
+    res.render('countries/form', templateVars);
+  } catch (error) {
+    console.error('Error rendering country form:', error);
+    res.status(500).send('Error rendering country form');
+  }
 });
 
 router.post('/upsert', async (req, res, next) => {
-  console.log('body: ' + JSON.stringify(req.body))
-  await Country.upsert(req.body);
-  req.session.flash = {
-    type: 'info',
-    intro: 'Success!',
-    message: 'A new country has been added!',
-  };
-  res.redirect(303, '/countries')
- });
-
+  try {
+    console.log('body: ' + JSON.stringify(req.body));
+    await Country.upsert(req.body);
+    req.session.flash = {
+      type: 'info',
+      intro: 'Success!',
+      message: 'The country has been added or updated successfully!',
+    };
+    res.redirect(303, '/countries');
+  } catch (error) {
+    console.error('Error adding/updating country:', error);
+    req.session.flash = {
+      type: 'error',
+      intro: 'Error!',
+      message: 'Failed to add or update the country. Please try again later.',
+    };
+    res.redirect(303, '/countries/form');
+  }
+});
 module.exports = router;
 
 
