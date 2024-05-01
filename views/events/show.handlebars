@@ -9,10 +9,15 @@
 
 <h3>US Action</h3>
 {{#each event.us_actions}}
-  <li>{{this}}</li>
+  <li>{{this.actionName}} - {{this.actionDescription}}</li>
 {{/each}}
 
-<h3>individuals</h3>
-{{#each event.individuals}}
-  <li>{{this}}</li>
-{{/each}}
+<h3>Individuals</h3>
+<ul>
+  {{#each event.individuals}}
+    <li>{{this.individualName}} - {{this.individualRole}}</li>
+  {{/each}}
+</ul>
+
+
+

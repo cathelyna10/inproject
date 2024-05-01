@@ -32,22 +32,22 @@ router.get('/show/:id', async (req, res) => {
 
 router.get('/edit', async (req, res, next) => {
   let countryIndex = req.query.id;
-  let country = Country.get(genreIndex);
+  let country = Country.get(countryIndex);
   res.render('countries/forms', { title: 'Imperial Footprints || Country', country: country, countryIndex: countryIndex, events: Event });
 });
 
 router.get('/forms', async (req, res, next) => {
-  res.render('genres/form', { title: 'Imperial Footprints || Countries', events: Event.all });
+  res.render('countries/form', { title: 'Imperial Footprints || Countries', events: Event.all });
 });
 
 
-router.get('/forms', async (req, res, next) => {
+router.get('/form', async (req, res, next) => {
   let templateVars = { title: 'Imperial Footprints || Countries' }
   if (req.query.id) {
     let country = await Country.get(req.query.id)
-    if (genre) {templateVars['country'] = country}
+    if (country) {templateVars['country'] = country}
   }
-  res.render('countries/forms', templateVars);
+  res.render('countries/form', templateVars); 
 });
 
 router.post('/upsert', async (req, res, next) => {

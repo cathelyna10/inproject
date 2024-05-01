@@ -25,13 +25,13 @@ li::marker {
 
 
 <h1>Countries</h1>
-<a href="/countries/forms"><h2>Add a new Country</h2></a>
+<a href="/Countries/form"><h2>Add a new Country</h2></a>
 <h2>A list of countries interfered by the United States</h2>
 
 {{#each countries}}
 <li>
-<a href="/events/show/{{this.id}}"><b>{{this.countryName}}</b> </a>
-  <a href="/authors/edit?id={{this.id}}">edit</a>
+<a href="/countries/show/{{this.id}}"><b>{{this.countryName}}</b> </a>
+  <a href="/countries/edit?id={{this.id}}">edit</a>
 
 
 </li>

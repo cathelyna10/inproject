@@ -13,18 +13,19 @@ exports.get = async (id) => {
   return db.camelize(rows)[0]
  }
 
- exports.update = async (country) => {
+exports.update = async (country) => {
   return await db.getPool()
     .query("UPDATE country SET name = $1 where id = $2 RETURNING *",
-      [country.countryName, country.id]);}
-
-      exports.upsert = async (country) => {
-        if (country.id) {
-          return exports.update(country);
-        } else {
-          return exports.add(country);
-        }
-      }
+      [country.countryName, country.id]);
+    
+}
+exports.upsert = async (country) => {
+  if (country.id) {
+   return exports.update(country);
+ } else {
+   return exports.add(country);
+ }
+}
  
 
 
