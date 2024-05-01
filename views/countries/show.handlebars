@@ -1,2 +1,11 @@
-<h1>{{country.countryName}}</h1>
-<p>{{country.countryName}} was involved in {{event.eventName}}</p>
+<h1>{{ country.countryName }}</h1>
+{{#if events.length}}
+  <p>{{ country.countryName }} was involved in the following events:</p>
+  <ul>
+    {{#each events}}
+      <li>{{ this.eventName }}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>{{ country.countryName }} was not involved in any events.</p>
+{{/if}}
