@@ -5,43 +5,43 @@ create database db_us;
 \c db_us
 
 CREATE TABLE "us_action" (
-  "ID" int,
+  "id" int,
   "us_action" varchar,
   "action_description" varchar,
   PRIMARY KEY ("ID")
 );
 
 CREATE TABLE "country" (
-  "ID" serial,
+  "id" serial,
   "country_name" varchar,
   PRIMARY KEY ("ID")
 );
 
 CREATE TABLE "individual" (
-  "ID" serial,
+  "id" serial,
   "individual_name" varchar,
   "individual_role" varchar,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );
 
 CREATE TABLE "event" (
-  "ID" serial,
+  "id" serial,
   "event_year" int,
   "event_name" varchar, 
   "us_action_id"
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );
 
-CREATE TABLE "individuals_event" (
-  "ID" serial,
+CREATE TABLE "individual_event" (
+  "id" serial,
   "event_id" int, 
   "individual_id" int,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );
 
 CREATE TABLE "event_country" (
-  "ID" serial,
+  "id" serial,
   "event_id" int,
   "country_id" int,
-  PRIMARY KEY ("ID")
+  PRIMARY KEY ("id")
 );

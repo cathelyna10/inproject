@@ -33,10 +33,10 @@ router.get('/show/:id', async (req, res) => {
 router.get('/edit', async (req, res, next) => {
   let countryIndex = req.query.id;
   let country = Country.get(countryIndex);
-  res.render('countries/forms', { title: 'Imperial Footprints || Country', country: country, countryIndex: countryIndex, events: Event });
+  res.render('countries/form', { title: 'Imperial Footprints || Country', country: country, countryIndex: countryIndex, events: Event });
 });
 
-router.get('/forms', async (req, res, next) => {
+router.get('/form', async (req, res, next) => {
   res.render('countries/form', { title: 'Imperial Footprints || Countries', events: Event.all });
 });
 

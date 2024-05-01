@@ -22,6 +22,8 @@ router.get('/show/:id', async (req, res) => {
     const eventId = req.params.id;
     const eventData = await Event.allForEvent(eventId);
 
+
+  
     if (!eventData || eventData.length === 0) {
       return res.status(404).send('Event not found');
     }

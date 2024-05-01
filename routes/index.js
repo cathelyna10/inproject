@@ -1,5 +1,17 @@
 const express = require('express');
 const router = express.Router();
+
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'BookedIn' });
+});
+
+module.exports = router;
+
+
+
+
+/*const express = require('express');
+const router = express.Router();
 const Event = require('../models/event');
 const Country = require('../models/country');
 const UsAction = require('../models/us_action');    // Including the UsAction model
@@ -57,7 +69,7 @@ router.get('/show/:id', async (req, res) => {
 
 module.exports = router;
   
-
+*/
 //this file just exports
 // all u can see is file exports and the router.
 

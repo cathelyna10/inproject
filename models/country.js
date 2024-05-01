@@ -15,10 +15,10 @@ exports.get = async (id) => {
 
 exports.update = async (country) => {
   return await db.getPool()
-    .query("UPDATE country SET name = $1 where id = $2 RETURNING *",
-      [country.countryName, country.id]);
-    
+    .query("UPDATE country SET countryName = $1 where id = $2 RETURNING *",
+      [country.country_name, country.id]); 
 }
+
 exports.upsert = async (country) => {
   if (country.id) {
    return exports.update(country);

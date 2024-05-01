@@ -23,11 +23,9 @@ const individualsRouter = require('./routes/individuals');
 
 const app = express()
 const port = 3000
-
 const cookieParser = require('cookie-parser')
 
-
-
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser(credentials.cookieSecret));
 app.use(expressSession({
   secret: credentials.cookieSecret,
@@ -35,6 +33,8 @@ app.use(expressSession({
   saveUninitialized: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 }));
+
+//flash message
 app.use((req, res, next) => {
   res.locals.flash = req.session.flash
   delete req.session.flash

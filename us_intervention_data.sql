@@ -160,14 +160,13 @@ INSERT INTO individual_event (individual_id, event_id) VALUES (8, 25);-- Lyndon 
 INSERT INTO individual_event (individual_id, event_id) VALUES (9, 25);-- Richard Nixon during the continuation of the Vietnam War
 INSERT INTO individual_event (individual_id, event_id) VALUES (10, 25);-- Jimmy Carter during the Iran Hostage Crisis
 INSERT INTO individual_event (individual_id, event_id) VALUES (11, 27); -- Ronald Reagan and Invasion of Grenada
-INSERT INTO individual_evenat (individual_id, event_id) VALUES (12, 28); -- George H.W. Bush and Gulf War
+INSERT INTO individual_event (individual_id, event_id) VALUES (12, 28); -- George H.W. Bush and Gulf War
 INSERT INTO individual_event (individual_id, event_id) VALUES (13, 30); -- Bill Clinton and NATO bombing of Yugoslavia
 INSERT INTO individual_event (individual_id, event_id) VALUES (14, 32); -- George W. Bush and Invasion of Afghanistan
 INSERT INTO individual_event (individual_id, event_id) VALUES (14, 33); -- George W. Bush and Invasion of Iraq
 INSERT INTO individual_event (individual_id, event_id) VALUES (15, 34); -- Barack Obama and Intervention against ISIS
 INSERT INTO individual_event (individual_id, event_id) VALUES (16, 40); -- Donald Trump and Airstrike killing Qasem Soleimani
 INSERT INTO individual_event (individual_id, event_id) VALUES (48, 41); -- Joe Biden and Palestinian Genocide
--- non-US Presidents for key events
 INSERT INTO individual_event (individual_id, event_id) VALUES (17, 1); -- Empress Dowager Cixi and Boxer Rebellion
 INSERT INTO individual_event (individual_id, event_id) VALUES (18, 2); -- Tomás Estrada Palma and Platt Amendment
 INSERT INTO individual_event (individual_id, event_id) VALUES (19, 3); -- Manuel Amador Guerrero and Panama Revolution
